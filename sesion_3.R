@@ -41,9 +41,9 @@ setwd("~/R/Nuevo curso") # Note que empieza con ~ ya que esto nos dirige automá
 
 ## El primer paso es importar el archivo desde carpeta de trabajo.
 
-dat <-read.csv("Santander_BIO_data.csv") # Note que los nombres de los documentos van entre comillas y con la extensión del documento
+dat <-read.csv("SantanderBIO.csv") # Note que los nombres de los documentos van entre comillas y con la extensión del documento
 
-## Ya hemos cargado nuestros datos en un data frame, el cual contiene información sobre inventarios de la biodiversidad en el marco del proyecto Santander BIO. Nuestro data frame cuenta con información taxonómica (Nombre de la especie, familia, reino, etc.) e información sobre los sitios y la altura a la que se encuentran estas especies.
+## Ya hemos cargado nuestros datos en un data frame, el cual contiene información sobre inventarios de la biodiversidad en el marco del proyecto SantanderBIO. Nuestro data frame cuenta con información taxonómica (Nombre de la especie, familia, reino, etc.) e información sobre los sitios y la altura a la que se encuentran estas registros.
 
 ##################################################################
 
@@ -87,7 +87,7 @@ max(dat$elevation) #Y con max el valor máximo.
 #Sabemos que hay distintos lugares en donde se colecto la información y que cada lugar puede aparecer más de una vez porque es probable que cuente con más de una especie colectada, también es probable que una especie se repita debido a que se puede encontrar en más de un lugar. Entonces, vamos a averiguar el número de especies registradas en total.
 
 dat$species
-length(dat$species)
+length(dat$species) # la longitud del vector nos da el numero total de registros
 
 species <- unique(dat$species) #Con la función "unique" obtendremos los nombres de las especies sin que se repitan.
 
@@ -109,7 +109,7 @@ length(sp_unicas_cimitarra) #En el municipio de Cimitarra se registraron 397 esp
 
 # Averigue la siguiente información del municipio de Cimitarra:
 
-# Elevacion máxima y mínima de los registros obtenidos
+# Elevacion máxima y mínima de los registros en SantanderBIO
 
 max(m_Cimitarra$elevation)
 min(m_Cimitarra$elevation)
@@ -204,15 +204,15 @@ length(amphi_cimitarra[,1])
 
 dat$conteo <- 1 #Podemos añadir una nueva columna que tenga el número 1 en cada observación y así hacer una suma de filas 
 
-sum(dat[dat$municipio=="Cimitarra", 12]) #En Cimitarra existen 551 registros
+sum(dat[dat$municipio=="Cimitarra", "conteo"]) #En Cimitarra existen 551 registros
 
-sum(dat[dat$municipio=="El Carmen de Chucuri", 12]) #En el Carmen de Chucuri existen 372 registros totales
+sum(dat[dat$municipio=="El Carmen de Chucuri", "conteo"]) #En el Carmen de Chucuri existen 372 registros totales
 
-sum(dat[dat$municipio=="Santa Barbara", 12]) #En Santa Barbara existen 332 registros
+sum(dat[dat$municipio=="Santa Barbara", "conteo"]) #En Santa Barbara existen 332 registros
 
 #Finalmente, podemos eliminar la columna de conteo
 
-dat <- dat[,-12]
+dat <- dat[,-11]
 
 
 ##################################################################
@@ -266,6 +266,7 @@ dat[1144,] #El resultado de la fila 1144 corresponde la especie Curimata mivarti
 posiciones <- which(dat$elevation<80)
 
 nuevo_dat <- dat[posiciones,] #Podemos escribir el nombre del vector que contiene los valores de las posiciones para no escribirlas una por una
+
 nuevo_dat
 
 #Ademas de extraer información de un data frame, podemos editarlo de forma sencilla. Supongamos que encontramos un error asociado a un dato en específico, como el nombre de una familia. En nuestro caso hipotético, supongamos que nuestros datos tienen un error de digitación, y el nombre de la familia Acanthaceae está mal escrito, por lo que necesitamos modificarlo.
