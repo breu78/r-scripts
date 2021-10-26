@@ -56,7 +56,7 @@ points(x + 0.5, y, col = "blue", pch = 15, cex = 5.5)
 ## ¿Para qué son los argumentos "pch" y "cex"?
 ?points
 ####################################################################
-##                          Ejercicio 1                          ###
+##                          Ejercicio 1                           ##
 ####################################################################
 
 ## Haga una linea en zigzag con puntos de colores en los puntos de giro
@@ -73,9 +73,9 @@ points(0, 0, pch = 2, cex = 4)
 lines(c(-0.5, 0.5), c(-0.7, -0.7))
 
 
-##################################################################
+####################################################################
 
-## Más graficas:
+## Más gráficos:
 
 x <- seq(from = 0, to = 2 * pi, by = 0.2)
 y <- sin(x) #Función seno
@@ -83,7 +83,7 @@ plot(x, y)
 
 z <- cos(x) #Función coseno
 lines(x, z)  # Agregando líneas al gráfico anterior 
-points(x, z * 0.5, pch = 16) # agregando puntos al gráfico anterior 
+points(x, z * 0.5, pch = 16) # Agregando puntos al gráfico anterior 
 
 ## De nuevo, eje, etiquetas y título 
 plot(x, y, xlab = "eje x", type = "l", ylab = "eje y", main = "Curva sinusoidal")
@@ -100,7 +100,8 @@ plot(x, y, xlab = "eje x", type = "l", ylab = "eje y", main = "Curva sinusoidal"
 ##        Demostración de la versatilidad de la gráfica           ##
 ####################################################################
 
-## La representación gráfica en R es muy flexible. Vamos a cambiar más parámetros graficos
+## La representación gráfica en R es muy flexible. Vamos a cambiar más parámetros gráficos
+
 ## 'cex': escala de símbolos (tamaño)
 
 plot(x, y, cex = rep(1:8, times = 4))
@@ -122,15 +123,15 @@ par (bg="white")
 plot (1:25, cex=2, pch=1:25, col="blue", bg="red")
 
 ####################################################################
-##                        Ejercicio 2                             ##
+##                          Ejercicio 2                           ##
 ####################################################################
 
 # Consulte la pagina web de Quick-R para ver ejemplos de diagramas de dispersión.
 #(http://www.statmethods.net/graphs/scatterplot.html) y elija uno que explique a sus compañeros.
 
-#####################################################################
-##                   Barras, cajas e histogramas                   ##
-#####################################################################
+####################################################################
+##                  Barras, cajas e histogramas                   ##
+####################################################################
 
 # Algunas de las gráficas más populares para presentar y explorar datos son las barras (conteo de observaciones), cajas (estadísticos de nuestros datos) e histogramas (frecuencia de valores)
 
@@ -142,7 +143,7 @@ plot (1:25, cex=2, pch=1:25, col="blue", bg="red")
 
 # Vamos a explorar estas funciones
 
-## Barplot:
+### Barplot:
 
 # Si queremos observar el número de registros de nuestras variables, podemos hacerlo mediante un gráfico de barras. Para poder graficarlo necesitamos un vector o matriz que contenga valores numéricos
 
@@ -155,7 +156,7 @@ barplot(x, names.arg = c("x1", "x2", "x3", "x4", "x5"), ylim = c(0,100)) #Podemo
 
 #Ejercicio: Agregar colores diferentes a cada barra, nombres a los ejes y un título a la gráfica anterior
 
-## Boxplot:
+### Boxplot:
 
 #Mediante boxplot podemos hacer gráficos sencillos que nos muestren los estadísticos de nuestros datos
 
@@ -173,7 +174,7 @@ boxplot(Petal.Length ~ Species, data = iris) #Podemos graficar los estadísticos
 
 boxplot(Species ~ Petal.Length, data = iris)
 
-## Histograma:
+### Histograma:
 
 # Finalmente, mediante un histograma podemos explorar frecuencias de valores 
 
@@ -181,7 +182,7 @@ hist(iris$Sepal.Length) # En el gráfico, observamos la frecuencia (eje Y) y el 
 
 hist(iris$Petal.Width, col = "yellow")
 
-# Explore los diferentes argumentos dentro de cada función
+#Ejercicio: Explore los diferentes argumentos dentro de cada función
 
 ####################################################################
 ##                         Función par()                          ##
@@ -229,10 +230,10 @@ plot(x = c(1:10), y = c(11:20), main = "Dispersion")
 # font.sub
 
 ####################################################################
-##                        Ejercicio 3                             ##
+##                          Ejercicio 3                           ##
 ####################################################################
 
-# Explore los siguientes argumentos disponibles en par(), explique su función y utilícelas en una gráfica
+# Explore los siguientes argumentos disponibles en par(), explique su función y utilícelos en una gráfica
 
 dev.off()
 
@@ -247,9 +248,9 @@ new
 par(mfrow = c(1,1), bg = "white", las = 3, lty = 3, lwd = 1, pin = c(1,2)) 
 plot(x = c(1:10), y = c(11:20), main = "Dispersión")
 
-##################################################################
-##                    Gráficos compuestos                       ##
-##################################################################
+####################################################################
+##                      Gráficos compuestos                       ##
+####################################################################
 
 # Usando algunas de las funciones anteriores, podemos ajustar varias figuras en un plot
 
