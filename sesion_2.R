@@ -51,10 +51,11 @@ points(x , y, col = "red", pch = 19)
 lines(x, y, col = "blue")
 
 #Que ocurre aquí? Por favor explique:
-points(x + 0.5, y, col = "blue", pch = 15, cex = 5.5)     
+points(x + 0.5, y, col = "blue", pch = 15, cex = 1.5)     
 
 ## ¿Para qué son los argumentos "pch" y "cex"?
 ?points
+
 ####################################################################
 ##                          Ejercicio 1                           ##
 ####################################################################
@@ -158,13 +159,16 @@ barplot(x, names.arg = c("x1", "x2", "x3", "x4", "x5"), ylim = c(0,100)) #Podemo
 
 ### Boxplot:
 
-#Mediante boxplot podemos hacer gráficos sencillos que nos muestren los estadísticos de nuestros datos
+#Mediante boxplot podemos hacer gráficos sencillos que nos muestren los estadísticos de nuestros datos. 
+
 
 data(iris)
 
+
 iris #Cargamos un set de datos predeterminado en R y observamos su contenido
 
-#El set de datos iris contiene medidas del sépalo y pétalo de distintas especies de flores
+?iris # Este conjunto de datos de iris da las medidas en centímetros de las variables longitud y anchura de los sépalos y longitud y anchura de los pétalos, respectivamente, para 50 flores de cada una de las 3 especies de iris. Las especies son Iris setosa, versicolor y virginica.
+
 
 boxplot(iris$Sepal.Length) #En este boxplot podemos ver la mediana (linea negra central), los cuartiles 1 y 3 (area gris) y los valores atípicos o outliers (lineas extremas) de la variable longitud del sépalo de todas las especies 
 
@@ -181,6 +185,8 @@ boxplot(Species ~ Petal.Length, data = iris)
 hist(iris$Sepal.Length) # En el gráfico, observamos la frecuencia (eje Y) y el rango de valores que toma la variable (eje X)
 
 hist(iris$Petal.Width, col = "yellow")
+
+hist(iris$Petal.Width, col = "yellow", breaks=20) # Que pasa aqui cuando se cambia el argumento "breaks"?
 
 #Ejercicio: Explore los diferentes argumentos dentro de cada función
 
@@ -235,15 +241,15 @@ plot(x = c(1:10), y = c(11:20), main = "Dispersion")
 
 # Explore los siguientes argumentos disponibles en par(), explique su función y utilícelos en una gráfica
 
-dev.off()
-
-las
-lty
-lwd
-fig
-mai
-pin
-new
+# dev.off()
+# 
+# las
+# lty
+# lwd
+# fig
+# mai
+# pin
+# new
 
 par(mfrow = c(1,1), bg = "white", las = 3, lty = 3, lwd = 1, pin = c(1,2)) 
 plot(x = c(1:10), y = c(11:20), main = "Dispersión")
@@ -266,3 +272,4 @@ boxplot(datos_aleatorios)
 
 par(fig=c(0.1,0.67,0.1,0.25), new=TRUE)
 plot(x = datos_aleatorios, y = datos_aleatorios + 10) # Y añadimos un gráfico de dispersion de otro set de datos
+
