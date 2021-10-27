@@ -22,7 +22,7 @@
 
 #En esta sesión vamos a trabajar los datos de la sesión anterior de una manera diferente. Para esto vamos a cargar el conjunto de paquetes Tidyverse.
 
-install.packages("tidyverse")
+#install.packages("tidyverse")
 library(tidyverse)
 
 #Los paquetes que ofrece Tidyverse están orientados a facilitar la manipulación, importación, exploración y visualización de datos, permitiendo que el proceso sea eficiente y que los scripts puedan ser reproducibles entre usuarios. En esta sesión vamos a trabajar principalmente con el paquete  dplyr y algunas generalidades de otros paquetes para trabajar con datos tidy.
@@ -45,13 +45,13 @@ setwd("~/R/Nuevo curso")
 
 #El paquete Readr es una alternativa para leer datos rectangulares como un .csv. Las principales ventajas de usar readr para leer un .csv son la velocidad con la que se importan los datos y el "parse" realizado sobre estos. Esto último quiere decir que la función analizará automaticamente el tipo de dato que está siendo importando y no producirá cambios inesperados. Con frecuencia, la función base de R puede convertir vectores de caracteres a factores. Además, Readr lee automáticamente formatos de fechas.
 
-dat <- read_csv("Santander_BIO_data.csv") #Como resultado devuelve el número de filas y columnas, los nombres de las variables y el tipo de dato de cada una.
+dat <- read_csv("SantanderBIO.csv") #Como resultado devuelve el número de filas y columnas, los nombres de las variables y el tipo de dato de cada una.
 
 ## Recordemos que nuestro data frame contiene información sobre inventarios de la biodiversidad en el marco del proyecto Santander BIO. Nuestro data frame cuenta con información taxonómica (Nombre de la especie, familia, reino, etc) e información sobre los sitios y la altura a la que se encuentran estas especies.
 
 #Podemos cambiar el tipo de dato al importarlo, por ejemplo convertir algunas variables en factores
 
-dat <- read_csv("Santander_BIO_data.csv", col_types = 
+dat <- read_csv("SantanderBIO.csv", col_types = 
                   list(
                     species = col_character(),
                     locality = col_factor(),
@@ -61,7 +61,6 @@ dat <- read_csv("Santander_BIO_data.csv", col_types =
                     class = col_character(),
                     order = col_character(),
                     family = col_character(),
-                    genus = col_character(),
                     taxonRank = col_character(),
                     elevation = col_double()
                   )
@@ -75,7 +74,7 @@ dat <- read_csv("Santander_BIO_data.csv", col_types =
 
 class(dat) #Si miramos de que clase son los objetos cargados con el paquete Readr, nos damos cuenta que estos son de tipo tibble. Por esto, no hace sentido convertir un objeto cargado con Readr a un tibble, pero si podemos convertir un data frame convencional en un tibble.
 
-dat_conv <-read.csv("Santander_BIO_data.csv")
+dat_conv <-read.csv("SantanderBIO.csv")
 
 class(dat_conv)
 
@@ -110,7 +109,7 @@ tribble(
 ##                            dplyr                               ##
 ####################################################################
 
-dat <- read_csv("Santander_BIO_data.csv")
+dat <- read_csv("SantanderBIO.csv")
 
 #Dplyr es uno de los paquetes más utiles para la manipulación de datos. Dentro de sus funciones más utiles se encuentran:
 
@@ -224,6 +223,11 @@ clase_datos_completo <- dat %>%
   group_by(class) %>% 
   summarise(data = list(cur_data_all()))
 
+### GIO: CAN YOU PLEASE EXPLAIN A BIT MORE THE "CUR" FUNCTION, WHERE TO FND EXPLANATION
+### GIO: HOW TO ACCESS THE TIBBLE LIST; ESXTRACT THE DF AVES IN GROUPS
+### 
+
+
 #Explique la diferencia entre los 3 data frames
 
 #Cree un data frame en el cual agrupe las observaciones por la variable orden y calcule el número de observaciones, valor promedio y mediana de la elevación en cada uno
@@ -245,7 +249,7 @@ mayor <- dat %>%
 
 # 2. Averigue cual es la elevacion máxima en la que fue registrada una planta y un animal
 
-max_ele <- mayor <- dat %>% 
+max_ele <- dat %>% 
   group_by(kingdom) %>% 
   summarise(max = max(elevation)) 
 
@@ -255,9 +259,12 @@ max_ele <- mayor <- dat %>%
 
 ?ungroup
 
-max_ele2 <- mayor <- dat %>% 
+max_ele2 <- dat %>% 
   group_by(kingdom) %>% 
   mutate(max = max(elevation))
+  
+### ESTE ULTIMO EFERCICO ME PARECE POCO INTUITIVO, MODIFICAR O BORRAR?
+
 
 ## fin ejercicio
 ####################################################################
@@ -349,7 +356,7 @@ ordenado <- dat %>% arrange(desc(elevation))
 
 ?separate()
 
-separado <- dat %>% separate(species, c("specie", "genus"))
+separado <- dat %>% separate(species, c("genus", "species"))
 
 #separate() se encarga de separar caracteres cuando encuentra un valor diferente a una letra o numero, como el espacio. En este caso, separará los caracteres en dos columnas llamadas "specie" y "genus". Vemos que luego de ejecutar, obtenemos una advertencia con las posiciones de filas en las que encontraron problemas. Revisamos las posiciones en el data frame original
 
@@ -359,12 +366,12 @@ separado <- dat %>% separate(species, c("specie", "genus", "otro"))
 
 #Si usamos NA en vez del nombre de la nueva columna omitiremos esa columna
 
-separado <- dat %>% separate(species, c(NA, "genus"))
+separado <- dat %>% separate(genus, c(NA, "species"))
 
 #O podemos especificar el comportamiento de la separación
 
 separado <- dat %>% 
-  separate(species, c("specie", "genus"), " ", extra = "merge")#Le indicamos a la función que solo debe separar los caracteres cuando encuntre un espacio " ", y lo que queda sera único o se hará un "merge".
+  separate(species, c("genus", "species"), " ", extra = "merge")#Le indicamos a la función que solo debe separar los caracteres cuando encuntre un espacio " ", y lo que queda sera único o se hará un "merge".
 
 #Revisamos la observacion 226
 
