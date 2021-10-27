@@ -15,3 +15,4 @@ Sesion_4 @GIO please revise cur:l226 and tibble lists:l227;
 Sesion_4 @GIO please revise exercise l262;
 
 Adición
+Adición 2
