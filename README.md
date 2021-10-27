@@ -13,3 +13,5 @@ Sesion_2 approved by BR;
 Sesion_3 approved by BR;
 Sesion_4 @GIO please revise cur:l226 and tibble lists:l227;
 Sesion_4 @GIO please revise exercise l262;
+
+Adición
