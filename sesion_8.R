@@ -153,7 +153,7 @@ setwd("~/R/Nuevo curso")
 
 # En esta sección vamos a explorar el análisis de anova con un set de datos que contiene información taxonómica de especies vegetales, abundancia e información del diametro promedio de cada especie colectada en diferentes parcelas. Estos datos hacen parte de la fundación COLTREE, la cual se dedica al monitoreo de parcelas permanentes de vegetacion a nivel nacional, con el proposito de comprender el funcionamiento de los bosques en terminos de su productividad vegetal y su relacion con el ciclo del carbono. 
 
-dat <- read_csv("Species_Coltree.csv")
+dat <- read_csv("Spec_Coltree.csv")
 
 # Utilizando la función de Anova en R, vamos a evaluar si existen diferencias en el diametro entre los géneros de plantas de una misma familia. En este ejemplo, vamos a trabajar con mas de dos grupos ya que es más frecuente utilizar otra prueba (T-Test) para comparar solo dos grupos.
 
@@ -165,12 +165,12 @@ familia <- dat %>%
 # Visualizamos las medias de los géneros
 
 familia %>% 
-  ggplot(aes(x = Genero, y = DAP)) +
+  ggplot(aes(x = Genero, y = Diametro)) +
   geom_boxplot()
 
 # Realizamos la Anova
 
-anova <- aov(familia$DAP ~ familia$Genero)
+anova <- aov(familia$Diametro ~ familia$Genero)
 
 summary(anova)
 
