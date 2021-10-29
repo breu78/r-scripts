@@ -211,24 +211,38 @@ clase_etiqueta <- dat %>%
 
 #Utilizamos las funciones cur_ para crear subconjuntos de datos ordenados por grupo. Los nuevos subconjuntos serán una lista de tibbles.
 
-clase_grupo <- dat %>% 
-  group_by(class) %>% 
-  summarise(data = list(cur_group()))
+?context
+
+#Las funciones cur_ devuelven información sobre el grupo seleccionado en listas de tibles que puede contener una o mas variables. Esto dependerá de la función cur_ que usemos:
+
+#Mediante cur_data obtenemos el conjunto de variables asociadas a los factores de una variable deseada. El vector resultante será un data frame de dos variables, una columna del grupo (o variable) seleccionada y otra columna con una lista de las variables asociadas a cada factor:
 
 clase_datos <- dat %>% 
   group_by(class) %>% 
   summarise(data = list(cur_data()))
 
+#Ya que nuestro data frame contiene listas dentro, podemos acceder a ella mediante corchetes []:
+
+#Podemos extraer las variables mediante $
+
+clase_datos$class
+clase_datos$data
+
+#Para acceder a los elementos de una variable, usamos corchetes dobles. Y finalmente, usamos nuevamente $ para acceder a una variable ya que estamos dentro de otro data.frame
+
+clase_datos$data[[1]]$species #Seleccionamos el la columna "species" del tible de la primera clase contenido en el vector clase_datos
+
+#Para especificar una clase, las funciones de dplyr:
+
+Aves <- clase_datos %>% 
+  filter(class == "Aves") %>% 
+  select(data) 
+
+#cur_data elimina la variable seleccionada con los diferentes tibles que crea, si queremos mantenerla, usamos cur_data_all
+
 clase_datos_completo <- dat %>% 
   group_by(class) %>% 
   summarise(data = list(cur_data_all()))
-
-### GIO: CAN YOU PLEASE EXPLAIN A BIT MORE THE "CUR" FUNCTION, WHERE TO FND EXPLANATION
-### GIO: HOW TO ACCESS THE TIBBLE LIST; ESXTRACT THE DF AVES IN GROUPS
-### 
-
-
-#Explique la diferencia entre los 3 data frames
 
 #Cree un data frame en el cual agrupe las observaciones por la variable orden y calcule el número de observaciones, valor promedio y mediana de la elevación en cada uno
 
@@ -252,19 +266,6 @@ mayor <- dat %>%
 max_ele <- dat %>% 
   group_by(kingdom) %>% 
   summarise(max = max(elevation)) 
-
-# 3. Repita el ejercicio anterior, pero mantenga las demás columnas del data frame para visualizar que especies se cuentran a esta altura
-
-# Pista: use la funcion mutate, ungroup y filter para mantener todas las columnas
-
-?ungroup
-
-max_ele2 <- dat %>% 
-  group_by(kingdom) %>% 
-  mutate(max = max(elevation))
-  
-### ESTE ULTIMO EFERCICO ME PARECE POCO INTUITIVO, MODIFICAR O BORRAR?
-
 
 ## fin ejercicio
 ####################################################################
