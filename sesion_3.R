@@ -95,9 +95,9 @@ length(species) #Hay 1000 especies en total
 
 #Ahora averiguaremos cuantas especie únicas puede haber en un municipio aleatorio. Para esto, vamos a crear un vector que contenga solo los datos del municipio deseado, aunque esto no es obligatorio, puede ser una forma ordenada de escribir nuestro código.
 
-unique(dat$municipio) #Nombres de los municipios de colecta
+unique(dat$municipality) #Nombres de los municipios de colecta
 
-m_Cimitarra <- dat[dat$municipio=="Cimitarra",] #Usamos los corchetes [] para seleccionar las filas que contengan datos únicamente del municipio de Cimitarra. Después de la "," se deja vacío para que extraiga todas las columnas asociadas a las filas que seleccionamos
+m_Cimitarra <- dat[dat$municipality=="Cimitarra",] #Usamos los corchetes [] para seleccionar las filas que contengan datos únicamente del municipio de Cimitarra. Después de la "," se deja vacío para que extraiga todas las columnas asociadas a las filas que seleccionamos
 
 sp_unicas_cimitarra <- unique(m_Cimitarra$species)
 
@@ -116,11 +116,11 @@ min(m_Cimitarra$elevation)
 
 #Elevación máxima y mínima de los registros de aves
 
-colnames(m_Cimitarra) # la columna 11 es la columna de la altura
+colnames(m_Cimitarra) # la columna 10 es la columna de la altura
 
-max(m_Cimitarra[m_Cimitarra$class=="Aves", 11])
+max(m_Cimitarra[m_Cimitarra$class=="Aves", 10])
 
-min(m_Cimitarra[m_Cimitarra$class=="Aves", 11])
+min(m_Cimitarra[m_Cimitarra$class=="Aves", 10])
 
 # Número de localidades únicas 
 
@@ -133,31 +133,31 @@ length(unique(m_Cimitarra$locality))
 
 # 1. Extraer la altura máxima y mínima de la que se tiene registro en cada reino (Plantae, Animalia) por localidad (Vereda El Aguila, Vereda Guineales, Vereda Locacion, Vereda Riveras de San Juan)
 
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda El Aguila" & m_Cimitarra$kingdom=="Plantae", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda El Aguila" & m_Cimitarra$kingdom=="Plantae", 11])
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda El Aguila" & m_Cimitarra$kingdom=="Animalia", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda El Aguila" & m_Cimitarra$kingdom=="Animalia", 11])
+max(m_Cimitarra[m_Cimitarra$locality=="El Aguila" & m_Cimitarra$kingdom=="Plantae", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="El Aguila" & m_Cimitarra$kingdom=="Plantae", 10])
+max(m_Cimitarra[m_Cimitarra$locality=="El Aguila" & m_Cimitarra$kingdom=="Animalia", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="El Aguila" & m_Cimitarra$kingdom=="Animalia", 10])
 
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda Guineales" & m_Cimitarra$kingdom=="Plantae", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda Guineales" & m_Cimitarra$kingdom=="Plantae", 11])
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda Guineales" & m_Cimitarra$kingdom=="Animalia", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda Guineales" & m_Cimitarra$kingdom=="Animalia", 11])
+max(m_Cimitarra[m_Cimitarra$locality=="Guineales" & m_Cimitarra$kingdom=="Plantae", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="Guineales" & m_Cimitarra$kingdom=="Plantae", 10])
+max(m_Cimitarra[m_Cimitarra$locality=="Guineales" & m_Cimitarra$kingdom=="Animalia", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="Guineales" & m_Cimitarra$kingdom=="Animalia", 10])
 
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda Locacion" & m_Cimitarra$kingdom=="Plantae", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda Locacion" & m_Cimitarra$kingdom=="Plantae", 11])
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda Locacion" & m_Cimitarra$kingdom=="Animalia", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda Locacion" & m_Cimitarra$kingdom=="Animalia", 11])
+max(m_Cimitarra[m_Cimitarra$locality=="Locacion" & m_Cimitarra$kingdom=="Plantae", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="Locacion" & m_Cimitarra$kingdom=="Plantae", 10])
+max(m_Cimitarra[m_Cimitarra$locality=="Locacion" & m_Cimitarra$kingdom=="Animalia", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="Locacion" & m_Cimitarra$kingdom=="Animalia", 10])
 
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda Riveras de San Juan" & m_Cimitarra$kingdom=="Plantae", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda Riveras de San Juan" & m_Cimitarra$kingdom=="Plantae", 11])
-max(m_Cimitarra[m_Cimitarra$locality=="Vereda Riveras de San Juan" & m_Cimitarra$kingdom=="Animalia", 11])
-min(m_Cimitarra[m_Cimitarra$locality=="Vereda Riveras de San Juan" & m_Cimitarra$kingdom=="Animalia", 11])
+max(m_Cimitarra[m_Cimitarra$locality=="Riveras de San Juan" & m_Cimitarra$kingdom=="Plantae", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="Riveras de San Juan" & m_Cimitarra$kingdom=="Plantae", 10])
+max(m_Cimitarra[m_Cimitarra$locality=="Riveras de San Juan" & m_Cimitarra$kingdom=="Animalia", 10])
+min(m_Cimitarra[m_Cimitarra$locality=="Riveras de San Juan" & m_Cimitarra$kingdom=="Animalia", 10])
 
 # 2. Calcular el promedio de la altura por municipio
 
-mean(dat[dat$municipio=="Cimitarra",11])
-mean(dat[dat$municipio=="El Carmen de Chucuri",11])
-mean(dat[dat$municipio=="Santa Barbara",11])
+mean(dat[dat$municipality=="Cimitarra",10])
+mean(dat[dat$municipality=="El Carmen de Chucuri",10])
+mean(dat[dat$municipality=="Santa Barbara",10])
 
 ## Fin de los ejercicios
 ####################################################################
@@ -169,9 +169,9 @@ mean(dat[dat$municipio=="Santa Barbara",11])
 
 # Podemos especificar más de una condición para crear un set de datos más pequeño
 
-or_operador <- dat[dat$municipio=="Cimitarra" | dat$municipio=="Santa Barbara",] # Utilizamos el simbolo "|" o "or" para extraer una condición u otra. Si ambas condiciones son verdaderas en nuestro set de datos, se extraerán ambas.
+or_operador <- dat[dat$municipality=="Cimitarra" | dat$municipality=="Santa Barbara",] # Utilizamos el simbolo "|" o "or" para extraer una condición u otra. Si ambas condiciones son verdaderas en nuestro set de datos, se extraerán ambas.
 
-or_operador <- dat[dat$municipio=="Cimitarra" | dat$municipio=="Santa",] # En este caso solo  se extraerán las observaciones de Cimitarra ya que no existe un municipio llamado "Santa" dentro de nuestros datos
+or_operador <- dat[dat$municipality=="Cimitarra" | dat$municipality=="Santa",] # En este caso solo  se extraerán las observaciones de Cimitarra ya que no existe un municipio llamado "Santa" dentro de nuestros datos
 
 #Si queremos elegir todas las observaciones menos una en particular, usamos el operador lógico "!"
 
@@ -191,7 +191,7 @@ max(alt_0_100$elevation)
 
 # ¿Cómo podemos averiguar el número de observaciones de anfibios por municipio?
 
-amphi_cimitarra <- dat[dat$municipio=="Cimitarra" & dat$class=="Amphibia",]
+amphi_cimitarra <- dat[dat$municipality=="Cimitarra" & dat$class=="Amphibia",]
 length(amphi_cimitarra[,1])
 
 # Ejericio: Calcular también para El carmen de Chucurí y Santa Barbara.
@@ -204,11 +204,11 @@ length(amphi_cimitarra[,1])
 
 dat$conteo <- 1 #Podemos añadir una nueva columna que tenga el número 1 en cada observación y así hacer una suma de filas 
 
-sum(dat[dat$municipio=="Cimitarra", "conteo"]) #En Cimitarra existen 551 registros
+sum(dat[dat$municipality=="Cimitarra", "conteo"]) #En Cimitarra existen 551 registros
 
-sum(dat[dat$municipio=="El Carmen de Chucuri", "conteo"]) #En el Carmen de Chucuri existen 372 registros totales
+sum(dat[dat$municipality=="El Carmen de Chucuri", "conteo"]) #En el Carmen de Chucuri existen 372 registros totales
 
-sum(dat[dat$municipio=="Santa Barbara", "conteo"]) #En Santa Barbara existen 332 registros
+sum(dat[dat$municipality=="Santa Barbara", "conteo"]) #En Santa Barbara existen 332 registros
 
 #Finalmente, podemos eliminar la columna de conteo
 
@@ -291,7 +291,7 @@ verificacion <- dat2[dat2$family=="Notviperidae",] #Y finalmente verificamos que
 
 # 2. Realice un gráfico del número de registros de insectos en cada localidad
 
-# 3. Realice un boxplot de la elevacion por clases
+# 3. Realice un boxplot de la elevación por clases
 
 # 4. Realice un histograma de la elevación
 

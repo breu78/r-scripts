@@ -16,7 +16,7 @@
 ##                                                                ##
 ####################################################################
 ##                                                                ##
-##            ***   Unidad 2  ***  Sesión 1   ***                 ##
+##            ***   Unidad 3  ***  Sesión 1   ***                 ##
 ##                                                                ##
 ####################################################################
 
@@ -116,7 +116,7 @@ library(ggplot2)
 ggplot(iris, aes(Sepal.Width)) +
   geom_bar(stat = "count")
 
-# ¿Cuál dato representa mejor una distribución normal?
+# ¿Cuál de las 4 variables (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) representa mejor una distribución normal?
 
 ##################################################################
 ## Ejercicio
@@ -143,19 +143,20 @@ y <- (2*x)+7
 plot(x,y)
 
 ## fin ejercicio
-############################################################################
+###################################################################
+
 
 ###################################################################
 ##           Probabilidad en la distribución normal              ##
 ###################################################################
 
-# Para calcular la probabilidad de obtener un valor que viene de una distribución normal, utilizamos la funcion pnorm()
+# Para calcular la probabilidad de obtener un rango de valores que viene de una distribución normal, utilizamos la funcion pnorm()
 
 ?pnorm
 
-# Podemos calcular la probabilidad de obtener un valor menor que -2 que venga de una distribución normal (mean = 2, sd = 2)
+# Podemos calcular la probabilidad de obtener un valor menor de -2 que venga de una distribución normal (mean = 2, sd = 2)
 
-pnorm(q = 9, mean = 2, sd = 2)
+pnorm(q = -2, mean = 2, sd = 2)
 
 # O también podemos calcular la probabilidad de obtener un valor mayor que -2 que venga de la distribucion normal mencionada anteriormente (mean = 2, sd = 2)
 
@@ -166,7 +167,7 @@ pnorm(q = 9, mean = 2, sd = 2)
 
 # 1) ¿Cuál es la probabilidad de obtener un valor menor que 5 que venga de la distribucion normal mencionada anteriormente (mean = 5, sd = 2)?
 
-pnorm(q = 100,m = 0,sd = 1)
+pnorm(q = 5 ,m = 5,sd = 1)
 
 # 2) ¿Cuál es la probabilidad de obtener un valor entre 2 y 8?
 pnorm(8,5,2)-pnorm(2,5,2)

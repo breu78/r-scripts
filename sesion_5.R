@@ -16,7 +16,7 @@
 ##                                                                ##
 ####################################################################
 ##                                                                ##
-##            ***   Unidad 1  ***  Sesión 5   ***                 ##
+##            ***   Unidad 2  ***  Sesión 5   ***                 ##
 ##                                                                ##
 ####################################################################
 
@@ -42,7 +42,7 @@ ggplot(data = dat) +
   aes(x = class) +
   geom_bar() #Y añadimos un geom_ para representar geometricamente nuestros datos. Hay que tener precaución ya que no todos las representaciones gráficas funcionan bien para la relación entre las variables que establezcamos. Ggplot realiza algunas gráficas de manera predeterminada, si solo dejamos en aes() una unica variable, este graficará el número de observaciones por cada clase que exista en esa variable (geom_bar(stat="count")), ya que convierte las variables en factores para graficarlas
 
-#Estos son los 3 componentes principales para elaborar una gráfica en ggplot. Es posible seguir añadiendo capas para mejorar nuestra grafica y personalizarla de muchas maneras, sin embargo, si no se especifican Ggplot las establecerá por defecto
+#Estos son los 3 componentes principales para elaborar una gráfica en ggplot. Es posible seguir añadiendo capas para mejorar nuestra grafica y personalizarla de muchas maneras, sin embargo, si no se especifican, ggplot las establecerá por defecto
 
 #Al hacer parte del mundo de tidyverse, es posible encadenar la función de ggplot con las funciones vistas anteriormente y así crear un gráfico de forma directa. Vamos a crear una gráfico que nos muestre el número de especies únicas por municipio
 
