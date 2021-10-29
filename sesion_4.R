@@ -271,7 +271,7 @@ max_ele <- dat %>%
 ####################################################################
 
 ####################################################################
-### Mutate:
+### Mutate: 
 
 #Ahora vamos a ver como se modifican columnas en dplyr mediante la función mutate().
 
