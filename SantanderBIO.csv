@@ -1,4 +1,4 @@
-Specie,Locality,Municipality,Kingdom,Phylum,Class,Order,Family,TaxonRank,Elevation
+species,locality,municipality,kingdom,phylum,class,order,family,taxonRank,elevation
 Aciotis circaeifolia,El Aguila,Cimitarra,Plantae,Tracheophyta,Magnoliopsida,Myrtales,Melastomataceae,SPECIES,158
 Adiantum obliquum,El Aguila,Cimitarra,Plantae,Tracheophyta,Polypodiopsida,Polypodiales,Pteridaceae,SPECIES,158
 Adiantum pulverulentum,El Aguila,Cimitarra,Plantae,Tracheophyta,Polypodiopsida,Polypodiales,Pteridaceae,SPECIES,159
