@@ -11,10 +11,6 @@ Sesion_4 revised by SFA;
 Sesion_1 approved by BR;
 Sesion_2 approved by BR;
 Sesion_3 approved by BR;
-Sesion_4 @GIO please revise cur:l226 and tibble lists:l227;
-Sesion_4 @GIO please revise exercise l262;
+Sesion_4 @GIO please revise cur:l226 and tibble lists:l227; please indicate here once revised
+Sesion_4 @GIO please revise exercise l262;please indicate here once revised
 
-Adición
-Adición 2
-Adición BR
-Adición 4
