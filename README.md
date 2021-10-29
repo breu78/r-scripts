@@ -18,3 +18,4 @@ SantanderBIO.csv: creo sea pertinente eliminar la palabra "Vereda" en la columna
 
 Sesion_5 approved by BR. Comment: As ggplot newbie still challenging for me, in the book we may explain a bit more about the different themes.
 
+Unidad_2 Data: I upload the csv files "Spec_Coltree.csv" and "Env_Coltree.csv" used in Unidad 2 sesions
