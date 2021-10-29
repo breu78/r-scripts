@@ -16,7 +16,7 @@
 ##                                                                ##
 ####################################################################
 ##                                                                ##
-##            ***   Unidad 2  ***  Sesión 1   ***                 ##
+##            ***   Unidad 3  ***  Sesión 1   ***                 ##
 ##                                                                ##
 ####################################################################
 
@@ -116,7 +116,7 @@ library(ggplot2)
 ggplot(iris, aes(Sepal.Width)) +
   geom_bar(stat = "count")
 
-# ¿Cuál dato representa mejor una distribución normal?
+# ¿Cuál de las 4 variables (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width) representa mejor una distribución normal?
 
 ##################################################################
 ## Ejercicio
@@ -143,7 +143,8 @@ y <- (2*x)+7
 plot(x,y)
 
 ## fin ejercicio
-############################################################################
+###################################################################
+
 
 ###################################################################
 ##           Probabilidad en la distribución normal              ##
