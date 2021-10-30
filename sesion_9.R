@@ -137,7 +137,7 @@ library(tidyverse)
 
 setwd("~/R/Nuevo curso")
 
-dat_spec <- read_csv("Spec_Coltree.csv")
+dat_spec <- read_csv("Species_Coltree.csv")
 
 dat_env <- read_csv("Env_Coltree.csv")
 
@@ -161,7 +161,9 @@ dat_env <- read_csv("Env_Coltree.csv")
 # Para calcular la riqueza de especies (diversidad), debemos contar el número de especies presentes en cada sitio (parcela en nuestro caso)
 
 conteo_parcela <- dat_spec %>% 
-  group_by(Codigo.de.Parcela) %>% 
+  group_by(Parcela) %>% 
+  select(N_cientifico) %>%
+  unique() %>% 
   summarise(n = n())
 
 barplot(conteo_parcela$n)
@@ -173,11 +175,17 @@ riqueza <- conteo_parcela$n
 # Convertimos nuestros datos a una matriz de abundancias:
 
 dat_abun <- dat_spec %>% 
-  select(Codigo.de.Parcela, N_cientifico, Num_indp) %>% #Seleccionamos las variables deseadas
-  group_by(Codigo.de.Parcela, N_cientifico) %>% # Agrupamos las observaciones por porcela y nombre de las especies
-  summarise(freq = sum(Num_indp)) %>% # Sumamos el número de individuos para obtener la abundancia de cada especie
-  pivot_wider(names_from = N_cientifico, values_from = freq) %>% # Mediante la función pivot_wider, convertimos la variable N_cientifico en columnas, y las sumas en observaciones a través de cada parcela. Para mayor información revise la función
-  replace(is.na(dat_abun), 0) # Reemplazamos los NA por 0
+  select(Parcela, N_cientifico) %>% #Seleccionamos las variables deseadas
+  group_by(Parcela, N_cientifico) %>% # Agrupamos las observaciones por parcela y nombre de las especies
+  summarise(freq = n()) %>% # contamos el número de individuos para obtener la abundancia de cada especie
+  pivot_wider(names_from = N_cientifico, values_from = freq) # Mediante la función pivot_wider, convertimos la variable N_cientifico en columnas, y el conteo en observaciones a través de cada parcela. Para mayor información revise la función
+
+# Reemplazamos los NA por 0
+
+dat_abun <- dat_abun %>%
+  replace(is.na(dat_abun), 0) 
+
+dat_abun <- dat_abun[,-1] #Eliminamos la variable del código de la parcela
 
 str(dat_abun) # Revisamos la matriz de abundancia creada
 
@@ -191,7 +199,7 @@ barplot(riqueza)
 
 # 2) Paquete vegan
 
-install.packages("vegan")
+#install.packages("vegan")
 
 library(vegan)
 
