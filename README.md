@@ -19,5 +19,6 @@ Sesion_5 approved by BR. Comment: As ggplot newbie still challenging for me, in 
 
 Sesion_7 approved by BR;
 Sesion_8 approved by BR;
+Sesion_9 approved by BR;
 
 Coltree data approved
