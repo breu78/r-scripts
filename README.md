@@ -17,4 +17,7 @@ SantanderBIO.csv: fine
 
 Sesion_5 approved by BR. Comment: As ggplot newbie still challenging for me, in the book we may explain a bit more about the different themes.
 
-Unidad_2 Data: I upload the csv files "Spec_Coltree.csv" and "Env_Coltree.csv" used in Unidad 2 sesions
+Sesion_7 approved by BR;
+Sesion_8 approved by BR;
+
+Coltree data approved
