@@ -196,7 +196,7 @@ p_a <- replace(dat_abun, dat_abun > 0, 1) # Convertimos la matriz de abundancias
 riqueza <- apply(p_a, 1, sum) # Sumamos las especies presentes en cada parcela para estimar su riqueza.
 
 barplot(riqueza)
-
+ 
 # 2) Paquete vegan
 
 #install.packages("vegan")
