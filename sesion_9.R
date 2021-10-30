@@ -137,7 +137,7 @@ library(tidyverse)
 
 setwd("~/R/Nuevo curso")
 
-dat_spec <- read_csv("Species_Coltree.csv")
+dat_spec <- read_csv("Spec_Coltree.csv")
 
 dat_env <- read_csv("Env_Coltree.csv")
 
