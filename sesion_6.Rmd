@@ -1,0 +1,105 @@
+---
+title: 'Sesión 6: R Markdown'
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+En esta sesión vamos a aprender a crear un documento markdown. Este es un formato para escribir reportes reproducibles y dinámicos en R. Usted puede exportar un markdown como PDF, HTML O Word, en donde puede incluir código de R y resultados como gráficas o texto. 
+
+La sintaxis de Markdown es igual a la usada en latex, un software en el cual se procesa texto. Por esto, antes de empezar, debemos instalar el paquete "tinytex".
+
+R Markdown cuenta con una sintaxis para escribir texto plano o código. Comenzando por el texto plano, vamos a revisar los distintos formatos de texto:
+
+### Sintaxis de texto plano:
+
+# Título 1
+
+## Título 2
+
+### Título 3
+
+#### Título 4
+
+*Texto en itálica* o _Texto en itálica_
+
+**Texto en negrilla** o __Texto en negrilla__
+
+Equaciones: $A = \pi*r^{2}$
+
+[enlace](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) 
+
+> Cita en bloque
+
+Título de la tabla | Segundo título
+------------------ | -------------
+Celda 1            | Celda 2
+Celda 3            | Celda 4
+
+* Lista
+  + Sub item de lista
+
+1. Lista numérica
+    + Sub item de la lista
+
+Separador:
+
+***
+
+### Sintaxis de código:
+
+Para incluir código en Markdown, debemos incluirlo dentro de la siguiente estructura denominada **"chunk"**:
+
+```{r}
+1+2
+```
+
+Podemos nombrar un chunk y ajustar la forma en la que se muestran los resultados mediante distintos argumentos definidos con el operado lógico TRUE o FALSE:
+
+###### *Nota: dos chunks no pueden tener el mismo nombre*
+
+* echo: Nos permite decidir si el código debe ser mostrado en el documento
+
+```{r suma y resta, echo=FALSE} 
+40+2-20
+```
+
+* eval: Nos da la opción si ejecutar el código y mostrar su resultado o no
+
+```{r, eval=FALSE} 
+5/2
+```
+
+* warning: Controla los mensajes de warning que pueden resultar al ejecutar el código
+
+```{r, warning=TRUE} 
+warning("Este es un mensaje de waning") 
+```
+
+* error: Controla los mensajes de errores que pueden resultar al ejecutar el código
+
+```{r, error=TRUE} 
+2*!
+```
+
+Podemos realizar gráficas y configurar el tamaño mostrado en el documento final:
+
+```{r, fig.width=2, fig.height=2, fig.align='center'}
+plot(cars)
+```
+
+Es posible ajustar mas de una gráfica a la vez:
+
+```{r, fig.width=3, fig.height=3, echo=FALSE, fig.ncol=3}
+plot(cars)
+hist(cars$speed, main = "Hisgrama de velocidad")
+hist(cars$dist, main = "Histograma de distancia")
+```
+
+###### [Mayor información sobre la configuración de chunks](https://yihui.org/knitr/options/)
+
+Finalmente, para generar nuestro documento, debemos usar el botón **Knit** que se encuentra en la partde superior de R. Allí escogeremos el documento de salida.
