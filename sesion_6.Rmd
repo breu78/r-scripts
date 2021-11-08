@@ -5,10 +5,6 @@ output:
   pdf_document: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 En esta sesión vamos a aprender a crear un documento markdown. Este es un formato para escribir reportes reproducibles y dinámicos en R. Usted puede exportar un markdown como PDF, HTML O Word, en donde puede incluir código de R y resultados como gráficas o texto. 
 
 La sintaxis de Markdown es igual a la usada en latex, un software en el cual se procesa texto. Por esto, antes de empezar, debemos instalar el paquete "tinytex".
