@@ -133,7 +133,7 @@ summary(fit1)
 # A comparación con el modelo que incluía todas las variables, aunque el r2 disminuyó, la significancia de las variables en el modelo aumentó. Para seleccionar variables que mejor se ajusten en el modelo, podemos hacer uso de otras funciones en R.
 
 ##################################################################
-##     Seleccion de modelos y parsimonia                        ##
+##                   Seleccion de modelos                       ##
 ##################################################################
 
 # Podemos hacer una selección de predictores en R mediante la función step()
@@ -154,5 +154,8 @@ summary(fit2)
 # 1. Use la función AIC() para escoger cual de los dos modelos fit1 y fit2 es mejor en predecir la riqueza de especies
 
 AIC(fit1, fit2)
+
 ## fin ejercicio
 ############################################################################
+
+
