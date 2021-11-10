@@ -22,3 +22,5 @@ Sesion_8 approved by BR;
 Sesion_9 approved by BR;
 
 Coltree data approved
+
+Sesion 6 and 10 uploaded: Gio
