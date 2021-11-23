@@ -67,13 +67,6 @@ y = rep(c(1,2), 6)
 plot(x, y, type = "l", col = "blue", lwd = 2)
 points(x, y, col = "red", pch = 16, cex = 3)
 
-## Haga una carita (:|)
-plot(0, 0, xlim = c(-2, 2), ylim = c(-2, 2), cex = 40)
-points(c(-0.5, 0.5), c(0.4, 0.4), cex = 5)
-points(0, 0, pch = 2, cex = 4)
-lines(c(-0.5, 0.5), c(-0.7, -0.7))
-
-
 ####################################################################
 
 ## Más gráficos:
