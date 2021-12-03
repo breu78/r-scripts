@@ -55,7 +55,7 @@ dat <- read_csv("SantanderBIO.csv", col_types =
                   list(
                     species = col_character(),
                     locality = col_factor(),
-                    municipio = col_factor(),
+                    municipality = col_factor(),
                     kingdom = col_factor(),
                     phylum = col_character(),
                     class = col_character(),
@@ -132,7 +132,7 @@ dat$species
 
 select(dat, species) #Seleccionamos el data frame y seguido una variable
 
-select(dat, species, locality, municipio) #O más de una variable
+select(dat, species, locality, municipality) #O más de una variable
 
 #Podemos encadenar varias funciones mediante "pipes" o %>% (se puede generar mediante el atajo control+shift+m). Esto es muy útil ya que nos permite realizar tareas con menos línea de código
 
@@ -151,14 +151,14 @@ dat %>% select(species) %>% unique() #Nos muestra los valores unicos de esta var
 
 ?filter()
 
-dat %>% filter(municipio == "El Carmen de Chucuri") #Hasta este paso filtramos nuestras observaciones
+dat %>% filter(municipality == "El Carmen de Chucuri") #Hasta este paso filtramos nuestras observaciones
 
-dat %>% filter(municipio == "El Carmen de Chucuri") %>% select(species) #Seleccionamos las localidades en las cuales se registró la especie Xiphidium caeruleum
+dat %>% filter(municipality == "El Carmen de Chucuri") %>% select(species) #Seleccionamos las localidades en las cuales se registró la especie Xiphidium caeruleum
 
-dat %>% filter(municipio == "El Carmen de Chucuri") %>% select(species) %>% unique() #Y obtenemos los nombres únicos de las especies que están presentes en el municipio de El carmen de Chuchuri
+dat %>% filter(municipality == "El Carmen de Chucuri") %>% select(species) %>% unique() #Y obtenemos los nombres únicos de las especies que están presentes en el municipio de El carmen de Chuchuri
 
 El_Carmen <- dat %>% 
-  filter(municipio == "El Carmen de Chucuri") %>% 
+  filter(municipality == "El Carmen de Chucuri") %>% 
   select(species) %>% 
   unique() #Esto puede ser guardado en un vector y separado de una forma mas elegante
 
@@ -167,7 +167,7 @@ length(El_Carmen$species) #Para El Carmen de Chucurí se registraron 357 especie
 # ¿Cuántas clases hay en ese mismo municipio?
 
 class_carmen <- dat %>% 
-  filter(municipio == "El Carmen de Chucuri") %>% 
+  filter(municipality == "El Carmen de Chucuri") %>% 
   select(class) %>% 
   unique()
 
@@ -193,13 +193,13 @@ conteo_clase <- dat %>%
   summarise(n = n()) #Realizamos un conteo de los registros de especies en cada clase
 
 ele_mean_group <- dat %>% 
-  group_by(municipio) %>% 
+  group_by(municipality) %>% 
   summarise(mean = mean(elevation), n = n())
 
 #Es posible realizar más de una operación simplemente añadiendo una "," y escribiéndola dentro de summarise. Calcule el valor promedio, mínimo y máximo de la elevación por municipio.
 
 ele_mean_group <- dat %>% 
-  group_by(municipio) %>% 
+  group_by(municipality) %>% 
   summarise(mean = mean(elevation), min(elevation), max(elevation), n = n())
 
 #Podemos etiquetar nuestros datos o incluso organizarlos dentro de un mismo data frame
@@ -243,12 +243,6 @@ Aves <- clase_datos %>%
 clase_datos_completo <- dat %>% 
   group_by(class) %>% 
   summarise(data = list(cur_data_all()))
-
-#Cree un data frame en el cual agrupe las observaciones por la variable orden y calcule el número de observaciones, valor promedio y mediana de la elevación en cada uno
-
-ejercicio <- dat %>% 
-  group_by(order) %>% 
-  summarise(data = list(cur_data_all()), n = n(), mean = mean(elevation), median = median(elevation))
 
 ####################################################################
 ##                         Ejercicio 1                            ##
@@ -300,7 +294,7 @@ nuevo_dat <- dat %>%
     elevation = elevation/2
   )
 
-#Podemos modificar multiples columnas usando across dentro de mutate
+#Podemos modificar múltiples columnas usando across dentro de mutate
 
 ?across
 
@@ -316,17 +310,13 @@ across_data <- dat %>%
 ##                         Ejercicio 2                            ##
 ####################################################################
 
-# 1. Cree dos columnas nuevas, una en donde le sume 1000 a cada observacion de elevación y otra donde le reste 1000. Ademas, mantenga la variable de especies, municipio y de elevación orginal. Agrupe las observacioens por municipio y cree un data frame que contenga los valores promedio de las 3 variables numéricas.
-
-##Pista: revise argumento where() y utilicelo dentro de la función across para seleccionar solo las columnas de clase numerica
+# 1. Cree dos columnas nuevas, una en donde le sume 1000 a cada observacion de elevación y otra donde le reste 1000. Ademas, mantenga la variable de especies, municipio y de elevación orginal
 
 ejercicio_2 <- dat %>%
-  select(species, municipio, elevation) %>% 
-  mutate(masmil = elevation+1000, menosmil = elevation-1000) %>% 
-  group_by(municipio) %>% 
-  summarise(across(where(is.numeric), mean))
+  select(species, municipality, elevation) %>% 
+  mutate(masmil = elevation+1000, menosmil = elevation-1000)
 
-# 2. Explore el argumento starts_with() para seleccionar las observaciones que empiezan con una secuencia de caracteres en especifico ej: starts_with("Anolis")
+# 2. Explore el argumento starts_with() para seleccionar las variables que empiezan con una secuencia de caracteres en especifico. 
 
 ## fin ejercicio
 #####################################################################
@@ -408,10 +398,10 @@ sum_prom <- dat %>%
 
 #Adicionalmente, podemos obtener resultados que dependan de mas de una variable. Si necesitamos obtener los valores promedio de elevación por clase y al mismo tiempo por municipio, agregamos el signo "+" de la siguiente manera:
 
-aggre_prom <- aggregate(elevation ~ class+municipio, data = dat, FUN = mean) #De esta forma, obtener el valor promedio de elvación de los registros en cada clase y en cada municipio
+aggre_prom <- aggregate(elevation ~ class+municipality, data = dat, FUN = mean) #De esta forma, obtener el valor promedio de elvación de los registros en cada clase y en cada municipio
 
 sum_prom <- dat %>% 
-  group_by(class, municipio) %>% 
+  group_by(class, municipality) %>% 
   summarise(mean = mean(elevation)) #Esto funciona de igual forma en summarise añadiendo otra variable en group_by
 
 ##################################################################
@@ -420,9 +410,9 @@ sum_prom <- dat %>%
 
 # 1. ¿Qué pasa al cambiar el orden de las variables en aggregate y en summarise? ¿Son los resultados iguales? Explique.
 
-aggre_prom2 <- aggregate(elevation ~ municipio+class, data = dat, FUN = mean)
+aggre_prom2 <- aggregate(elevation ~ municipality+class, data = dat, FUN = mean)
 sum_prom2 <- dat %>% 
-  group_by(municipio, class) %>% 
+  group_by(municipality, class) %>% 
   summarise(mean = mean(elevation))
 
 # 2. Utilice la función aggregate para calcular el número de observaciones de especies por orden utilizando la funcion length. Realice el mismo proceso usando el paquete dplyr
@@ -434,15 +424,15 @@ leng_sum <- dat %>%
 
 # 3. Calcule la desviacion estándar, el valor mínimo y máximo de la elevación para cada familia, phylum y municipio con aggregate y dplyr.
 
-ejercicio <- aggregate(elevation ~ family+phylum+municipio, data = dat, FUN = min)
-ejercicio_1 <- aggregate(elevation ~ family+phylum+municipio, data = dat, FUN = sd)
-ejercicio_2 <- aggregate(elevation ~ family+phylum+municipio, data = dat, FUN = max)
+ejercicio <- aggregate(elevation ~ family+phylum+municipality, data = dat, FUN = min)
+ejercicio_1 <- aggregate(elevation ~ family+phylum+municipality, data = dat, FUN = sd)
+ejercicio_2 <- aggregate(elevation ~ family+phylum+municipality, data = dat, FUN = max)
 
 final_ejercicio <- cbind(ejercicio, ejercicio_1$elevation,ejercicio_2$elevation)
 
 
 ejercicio_dplyr <- dat %>% 
-  group_by(family, phylum, municipio) %>% 
+  group_by(family, phylum, municipality) %>% 
   summarise(sd = sd(elevation), min = min(elevation), max = max(elevation))
 
 #En aggregate la solución del problema anterior requiere muchos más pasos que en dplyr.
@@ -489,7 +479,7 @@ which(str_detect(dat$species, "sia hamm")=="TRUE")
 
 #También podemos contar el numero de registros por localidad o municipio
 
-sum(str_count(dat$municipio, "Cimitarra"))
+sum(str_count(dat$municipality, "Cimitarra"))
 
 #En stringr podemos hacer busquedas mas generalizadas que no veremos en esta sesión, pero esto es un ejemplo de lo que podemos hacer conociendo algunas clases de caracteres
 
