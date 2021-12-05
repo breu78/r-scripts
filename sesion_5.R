@@ -47,25 +47,25 @@ ggplot(data = dat) +
 #Al hacer parte del mundo de tidyverse, es posible encadenar la función de ggplot con las funciones vistas anteriormente y así crear un gráfico de forma directa. Vamos a crear una gráfico que nos muestre el número de especies únicas por municipio
 
 dat %>% 
-  group_by(municipio) %>% 
+  group_by(municipality) %>% 
   summarise(unicos = unique(species)) %>% 
-  ggplot(aes(x = municipio)) +
+  ggplot(aes(x = municipality)) +
   geom_bar()
 
 #Ggplot también establece colores y leyenda por defecto a partir de los factores en el elemento aes() con el argumento fill
 
 dat %>% 
-  group_by(municipio) %>% 
+  group_by(municipality) %>% 
   summarise(unicos = unique(species)) %>% 
-  ggplot(aes(x = municipio, fill = municipio)) +
+  ggplot(aes(x = municipality, fill = municipality)) +
   geom_bar()
 
 #Podemos cambiar el orden de las barras cambiando el eje x a eje y. Si deseamos usar colores específicos para cada barra lo hacemos en el geom_:
 
 dat %>% 
-  group_by(municipio) %>% 
+  group_by(municipality) %>% 
   summarise(unicos = unique(species)) %>% 
-  ggplot(aes(y = municipio)) +
+  ggplot(aes(y = municipality)) +
   geom_bar(fill = c("blue", "yellow", "brown"), col = c("blue", "yellow", "brown")) # ¿Cuál es la diferencia entre fill y col?
 
 #Realice una gráfica con ggplot de los registros de mamíferos por cada localidad
@@ -80,7 +80,7 @@ dat %>%
 dat %>% 
   filter(order == "Coleoptera") %>% 
   group_by(locality) %>% 
-  ggplot(aes(x = locality, fill = municipio)) + 
+  ggplot(aes(x = locality, fill = municipality)) + 
   geom_bar()
 
 #Podemos agrupar las barras
@@ -88,7 +88,7 @@ dat %>%
 dat %>% 
   filter(order == "Coleoptera") %>% 
   group_by(locality) %>% 
-  ggplot(aes(x = municipio, fill = locality)) + 
+  ggplot(aes(x = municipality, fill = locality)) + 
   geom_bar(position =  "stack")
 
 #También podemos realizar gráficos de cajas e histogramas cambiando de geom_
@@ -96,7 +96,7 @@ dat %>%
 ?geom_boxplot
 
 dat %>% 
-  ggplot(aes(x = municipio, y = elevation)) + #Grafico de cajas de la elevacion por cada municipio
+  ggplot(aes(x = municipality, y = elevation)) + #Grafico de cajas de la elevacion por cada municipio
   geom_boxplot()
 
 ####################################################################
@@ -110,7 +110,7 @@ dat %>%
   ggplot(aes(x = locality, y = elevation)) +
   geom_boxplot()
 
-# 2. Como es la distribución de elevacion de las familias del orden Polypodiales?
+# 2. ¿Cómo es la distribución de elevacion de las familias del orden Polypodiales?
 
 dat %>% 
   filter(order=="Polypodiales") %>% 
@@ -175,13 +175,13 @@ dat %>% mutate(aleatorios = runif(1255, min = 0, max = 3600)) %>%
                      panel.grid.minor = element_blank(), 
                      axis.line = element_line(colour = "white")) +
   labs(title = "Elevación vs números aleatorios",
-       subtitle = "Data: SantanderBIO") 
+       subtitle = "Data: SantanderBIO") +
   labs(x = "Elevación", y = "Némeros aleatorios")
 
 #Coloreamos los puntos y modificamos el título de la leyenda generada
 
 dat %>% mutate(aleatorios = runif(1255, min = 0, max = 3600)) %>% 
-  ggplot(aes(x=elevation, y=aleatorios, color = municipio)) + #Gráfico base con color para cada punto
+  ggplot(aes(x=elevation, y=aleatorios, color = municipality)) + #Gráfico base con color para cada punto
   geom_point(shape=5) +  # Geom que corresponde a los puntos y shape para modificar la forma del punto
   theme_bw() + theme(panel.border = element_blank(), 
                      panel.grid.major = element_blank(), 
@@ -212,7 +212,7 @@ dat %>% mutate(aleatorios = runif(1255, min = 0, max = 3600)) %>%
 #Y por cada grupo
 
 dat %>% mutate(aleatorios = runif(1255, min = 0, max = 3600)) %>% 
-  ggplot(aes(x=elevation, y=aleatorios, color = municipio)) + 
+  ggplot(aes(x=elevation, y=aleatorios, color = municipality)) + 
   geom_point(shape=5) +  
   geom_smooth(method = "lm", se = TRUE) +
   theme_bw() + theme(panel.border = element_blank(), 
@@ -224,26 +224,13 @@ dat %>% mutate(aleatorios = runif(1255, min = 0, max = 3600)) %>%
        subtitle = "Data: SantanderBIO") + 
   labs(x = "Elevación", y = "Números aleatorios")
 
-#Podemos graficar una variable por cada grupo con colores que se sobreponen
-
-ggplot(data = dat) + 
-  geom_histogram(aes(x = elevation, fill = municipio), 
-                 bins = 12, position = "identity", alpha = 0.4) + # alpha para ver las barras que se sobreponen
-  theme_bw() + theme(panel.border = element_blank(), 
-                     panel.grid.major = element_blank(), 
-                     panel.grid.minor = element_blank(), 
-                     axis.line = element_line(colour = "white")) +
-  labs(title = "Elevación por municipio", 
-       subtitle = "Data: SantanderBIO") + 
-  labs(x = "Elevación", y = "Conteo")
-
 #Para poder mostrar mas de una gráfica en el mismo plot se utiliza face_wrap. Revise la función y realice el histograma anterior pero ubique en un mismo plot 3 gráficas para cada municipio
 
 ?facet_wrap
 
 ggplot(data = dat) + 
-  geom_histogram(aes(x = elevation, fill = municipio), bins = 12) + 
-  facet_wrap(~municipio, ncol = 1)+ #para cada especie, realice tres histogramas en una columna
+  geom_histogram(aes(x = elevation, fill = municipality), bins = 12) + 
+  facet_wrap(~municipality, ncol = 1)+ #para cada especie, realice tres histogramas en una columna
   theme_bw() + theme(panel.border = element_blank(), 
                      panel.grid.major = element_blank(), 
                      panel.grid.minor = element_blank(), 
