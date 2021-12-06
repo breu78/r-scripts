@@ -1,0 +1,34 @@
+####################################################################
+##                                                                ##
+##  Análisis de datos utilizando el lenguaje de programación R:   ##
+##  una experiencia de aprendizaje virtual en el aula invertida   ##
+##                                                                ##
+##                 Proyecto INNOVA-TIC 2021                       ##
+##                                                                ##
+## Creado por:     Björn Reu (breu@uis.edu.co )                   ##
+##                 Yovanny Duran Barajas                          ##
+##                 Zarith Tatiana Villamizar                      ##
+##                 Silvia Fernanda Ardila Hurtado                 ## 
+##                 Sergio Andres Bolivar-Santamaria               ##
+##                                                                ##
+##  con el apoyo de la Vicerrectoría Académica,                   ##
+##  Universidad Industrial de Santander                           ##
+##                                                                ##
+####################################################################
+##                                                                ##
+##                    ***   Parcial 1  ***                        ##
+##                                                                ##
+##                                                                ##
+####################################################################
+
+dat <- read.csv("Datos_Permanencia.csv")
+
+# Para el primer parcial, vamos a trabajar con un set de datos que contiene información académica de los estudiantes de Biología que han ingresado desde el año 2000 en adelante
+
+# 1. Muestre en una gráfica de barras las diferentes condicionalidades de los años 2006,2008,2010,2015. Elabore un "stacked barplot" en el cual "x" es cada uno de los años, y el eje "y" son las barras de las condicionalidades. Debe tener en cuenta lo siguiente: deberá agrupar las condicionalidades en 4 grupos: Graduado, matriculado (Condicional 1 y 2+ normal), pfu (Pfu+excluido por vencimiento de tiempo) y desertor (Cancelación de matrícula, cambio de programa, y retiros). Asigne colores y cree una leyenda para cada condicionalidad. (PLUS: convierta los valores en porcentaje). Según la gráfica, responda lo siguiente: ¿Qué año presenta el mayor número de graduados?; y ¿Debería haber valores similares de estudiantes graduados en cada año?
+
+# 2. Realice una gráfica de barras en donde muestre el número de estudiantes que hay por cada condicionalidad. Recuerde que puede resumir las condicionalidades en 4: Graduado, matriculado (Condicional 1 y 2+ normal), pfu (Pfu+excluido por vencimiento de tiempo) y desertor (Cancelación de matrícula, cambio de programa, y retiros). Para esto, es recomendable crear un vector por cada condicionalidad y hacer el conteo mediante los valores únicos del codigo_op. Adicionalmente, grafique los porcentajes de cada grupo encima de cada barra y etiquete los ejes. 
+
+# 3. Créditos promedio por semestre
+
+# 4. Retraso estudiantil por materia
