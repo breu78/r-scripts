@@ -81,8 +81,4 @@ dat <- read.csv("Datos_Permanencia.csv")
 
 # 3. Realice una gráfica de barras del número total de estudiantes únicos en cada matería del plan de biología. Tenga en cuenta que cada estudiante esta identificado por la variable "Codigo_op". Coloree las materias acorde al semestre a la cual pertenecen.
 
-# 4. Grafique el retraso estudiantil de cada materia del plan de biología (El número promedio de semestres que tardan los estudiantes en matricular una materia respecto al plan de estudios). Para esto, cree una nueva variable en el data frame existente en donde calcule el semestre en el cual los estudiantes matriculan la materia de la siguiente manera:
-
-(2*(dat$ano_matric-dat$Ano_Ingreso))+dat$periodo_matric
-
-# Realice una gráfica de cajas de cada asignatura. Además, estandarice las materias restando el número de semestre en el cuál cada matería debe ser matriculada en el plan ej: Si el retraso de Introducción a la biología es de 1, esto significa que fue matriculada en el semestre 1. Al restar el número del semestre (1), el valor que tenemos es 0, lo que significa que la materia no tiene retraso.
+# 4. Grafique el retraso estudiantil de cada materia del plan de biología (El número promedio de semestres que tardan los estudiantes en matricular una materia respecto al plan de estudios). Para esto, realice una gráfica de cajas del tiempo de matrícula de cada asignatura. Además, estandarice las materias restando el número de semestre en el cuál cada matería debe ser matriculada en el plan ej: Si el retraso de Introducción a la biología es de 1, esto significa que fue matriculada en el semestre 1. Al restar el número del semestre (1), el valor que tenemos es 0, lo que significa que la materia no tiene retraso.
