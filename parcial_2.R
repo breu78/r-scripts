@@ -21,10 +21,20 @@
 ##                                                                ##
 ####################################################################
 
+# Para este parcial parcial, vamos a trabajar nuevamente con el set de datos que contiene información académica de los estudiantes de Biología que han ingresado desde el año 2000 en adelante
+
 library(tidyverse)
 dat <- read_csv("Datos_Permanencia.csv")
 
-# 1. Grafique la permanencia de los estudiantes graduados que ingresaron entre 2000 - 2009 y aquellos que ingresaron del 2010 al 2019 mediante un boxplot utilizando los paquetes tidy. No olvide incluir las etiquetas de los ejes y el título de la gráfica.
+# 1. Utilice summarise y filter para averiguar cual es la forma de ingreso más común de los estudiantes de biología
+
+ing <- dat %>% 
+  group_by(Ingreso) %>% 
+  summarise(n = n()) %>% 
+  filter(n == max(n))
+
+
+# 2. Grafique la permanencia de los estudiantes graduados que ingresaron entre 2000 - 2009 y aquellos que ingresaron del 2010 al 2019 mediante un boxplot utilizando los paquetes tidy. No olvide incluir las etiquetas de los ejes y el título de la gráfica.
 
 dd <- dat %>% 
   select(Codigo_Op,Ano_Ingreso,Condicionalidad,permanencia) %>% 
@@ -91,7 +101,7 @@ ddf <- rbind(dd1, dd2)
 #10 semester
 "TRABAJO DE GRADO II"
 
-# 2. Realice una gráfica de barras en donde muestre en promedio cuántas veces los estudiantes de biología han visto cada materia (o recurrencia media) del plan de biología. Use los paquetes tidy para crear un data frame con la recurrencia media de cada asignatura y realice una gráfica horizontal en ggplot en la cual los valores esten ordenados de forma descendente. Además, establesca limites en el eje "y" para que los valores empiecen desde 1. Utilice nombres en los ejes y colores en las barras.
+# 3. Realice una gráfica de barras en donde muestre en promedio cuántas veces los estudiantes de biología han visto cada materia (o recurrencia media) del plan de biología. Use los paquetes tidy para crear un data frame con la recurrencia media de cada asignatura y realice una gráfica horizontal en ggplot en la cual los valores esten ordenados de forma descendente. Además, establesca limites en el eje "y" para que los valores empiecen desde 1. Utilice nombres en los ejes y colores en las barras.
 
 dd <- datP10 %>% 
   select(Codigo_Op, Nombre.Asignatura) %>% 
@@ -108,3 +118,5 @@ dd %>%
 
 ddf %>% ggplot(aes(x = grupo, y = permanencia)) +
   geom_boxplot()
+
+# 4. Presente este parcial en un documento markdown debidamente presentado
