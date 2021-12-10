@@ -26,7 +26,7 @@
 library(tidyverse)
 dat <- read_csv("Datos_Permanencia.csv")
 
-# 1. Utilice summarise y filter para averiguar cual es la forma de ingreso más común de los estudiantes de biología
+# 1. Utilice summarise y filter para averiguar cual es la forma de ingreso más común de los estudiantes de biología. Realice un histograma en ggplot de las diferentes formas de ingreso.
 
 ing <- dat %>% 
   group_by(Ingreso) %>% 
